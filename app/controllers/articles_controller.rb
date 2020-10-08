@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
+  before_action :require_login, except: [:index, :show]
 
   http_basic_authenticate_with name: "admin", password: "admin", except: [:index, :show]
   def index

@@ -11,6 +11,12 @@
 </p>
 
 <p>
+  <% if @article.image.exists? %>
+    <%= image_tag @article.image.url(:medium) %><br/>
+  <% end %>
+</p>
+
+<p>
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
@@ -21,5 +27,7 @@
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_article_path(@article) %>
+<%if logged_in? %>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+<% end %>
 <%= link_to '<Back', articles_path %>
