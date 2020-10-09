@@ -1,10 +1,11 @@
 class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   validates :title, presence: true,
                     length: {minimum: 2}
-  
+  belongs_to :user
+
   def tag_list
   #   self.tags.collect do |tag|
   #     tag.name
