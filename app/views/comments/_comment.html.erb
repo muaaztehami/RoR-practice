@@ -1,15 +1,40 @@
 <p>
   <strong>Commenter:</strong>
-  <%= comment.commenter %>
+  <%= User.find(comment.user_id).email %>
 </p>
 <p>
   <strong>Comment:</strong>
   <%= comment.body %>
 </p>
 
+<p class="reply" >
+  <% if comment.subcomments.exists? %>
+    <% comment.subcomments.each do |comment| %>
+      <p>
+        <strong>reply:</strong>
+        <%= comment.body %>
+      |
+        <strong>by:</strong>
+        <%= User.find(comment.user_id).email %>
+        <% if comment.user == current_user %>
+          <%= link_to 'Destroy reply', [comment.commentable, comment],
+                method: :delete,
+                data: {confirm: 'Are you sure?'}
+          %>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+</p>
+
 <p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-               method: :delete,
-               data: {confirm: 'Are you sure?'}
-  %>
-</p>             
+  <% if comment.user == current_user %>
+    <%= link_to 'Destroy Comment', [comment.commentable, comment],
+                method: :delete,
+                data: {confirm: 'Are you sure?'}
+    %>
+  <% end %>
+|
+  <%= link_to 'Reply', new_comment_comment_path(comment) %>
+</p>            
+
