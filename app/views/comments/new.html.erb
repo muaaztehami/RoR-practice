@@ -1,5 +1,6 @@
-<%= form_with(model: [@article, @article.comments.build], local: true) do |form| %>
+<%= form_with(model: [@commentable, @comment.subcomments.build], local: true) do |form| %>
     
+
     <p>
       <%= form.label :body %><br>
       <%= form.text_area :body %>
@@ -7,5 +8,5 @@
     <p>
       <%= form.submit %>
     </p>
-  <% end %>
+<% end %>
   
