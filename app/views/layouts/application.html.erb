@@ -19,7 +19,8 @@
       <% else %>
 
         <%= link_to 'Sign up', new_user_registration_path %> |
-        <%= link_to 'Login', new_user_session_path %>
+        <%= link_to 'Login', new_user_session_path %> |
+        <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
       <% end %>
     </p>
     <p class="notice"><%= notice %></p>
