@@ -15,6 +15,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   # def destroy
+  #   puts "...................."
+  #   #current_user.invalidate_all_sessions!
+  #   #session[:user_id] = nil
+  #   #@user.uid = nil
+  #   session[:user_id] = nil
   #   super
   # end
 
