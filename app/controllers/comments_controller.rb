@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_commentable, only: [:create, :destroy, :new]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
   #http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
  
   # def create
@@ -10,9 +11,9 @@ class CommentsController < ApplicationController
   def new 
     @comment = current_user.comments.build(commentable: @commentable)
   end 
-  def index
-    @comment = Comment.all
-  end
+  # def index
+  #   @comment = Comment.all
+  # end
 
   def create 
     @comment = current_user.comments.create!(commentable: @commentable, body: comment_params[:body])
