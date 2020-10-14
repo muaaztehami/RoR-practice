@@ -13,7 +13,3 @@
  *= require_tree .
  *= require_self
  */
- .reply{
-    margin-left:55px; 
-    color: red; 
-  }

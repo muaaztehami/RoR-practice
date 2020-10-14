@@ -62,6 +62,11 @@ Rails.application.configure do
 
   #########
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+  end
+
 end
 
 #ENV['GOOGLE_OAUTH_CLIENT_ID'] = '860801788081-ieu0bh336dqevepn0i8u54i9o7gshmhd.apps.googleusercontent.com'
