@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_10_12_173234) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -25,14 +28,14 @@ ActiveRecord::Schema.define(version: 2020_10_12_173234) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "commentable_type"
-    t.integer "commentable_id"
+    t.bigint "commentable_id"
     t.integer "user_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id", null: false
-    t.integer "article_id", null: false
+    t.bigint "tag_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_taggings_on_article_id"

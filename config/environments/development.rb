@@ -68,6 +68,3 @@ Rails.application.configure do
   end
 
 end
-
-#ENV['GOOGLE_OAUTH_CLIENT_ID'] = '860801788081-ieu0bh336dqevepn0i8u54i9o7gshmhd.apps.googleusercontent.com'
-#ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'XdbkSVm271lJGqnZaKt6gGV0'
