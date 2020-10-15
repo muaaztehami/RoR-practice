@@ -1,4 +1,4 @@
-<%= form_with(model: @article, html: {multipart: true}, local: true) do |form| %>
+<%= form_with(model: @article, local: true) do |form| %>
     <% if @article.errors.any? %>
       <div id="error_explanation">
         <h2>
@@ -25,14 +25,6 @@
     <p>
       <%= form.label :tag_list %><br/>
       <%= form.text_field :tag_list %>
-    </p>
-
-    <p>
-      <% if @article.image.exists? %>
-        <%= image_tag @article.image.url(:medium) %><br/>
-      <% end %>
-      <%= form.label :image, "Attach a New Image" %><br/>
-      <%= form.file_field :image %>
     </p>
 
     <p>
